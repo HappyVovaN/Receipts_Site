@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet"/>
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Short name</th>
+        <th scope="col">Full name</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Category</th>
+        <th scope="col">Shop</th>
+        <th scope="col">Adress</th>
+        <th scope="col">Time date</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for product in products %}
+    <tr>
+      <th scope="row">{{ product.id }}</th>
+      <td>{{ product.short_name }}</td>
+      <td>{{ product.full_name }}</td>
+      <td>{{ product.cost }}</td>
+      <td>{{ product.amount }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.shop }}</td>
+      <td>{{ product.adress }}</td>
+      <td>{{ product.time_date }}</td>
+    </tr>
+  {% empty %}
+      <li>No products yet.</li>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

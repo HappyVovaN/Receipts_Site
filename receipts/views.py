@@ -18,7 +18,7 @@ def receipts_in(request):
     context = {
         'cont': 'пишем сюда свои чеки или закидываем'
     }
-    return render(request, 'receipts/index.html', context)
+    return render(request, 'receipts/upload.html', context)
 
 
 def all_receipts(request):
@@ -38,11 +38,11 @@ def statistic(request):
 
 class Products_ALL(ListView):
     model = Product
-    template_name = 'receipts/product_list2.html'
+    template_name = 'receipts/product_list.html'
 
     def get_context_data(self, **kwargs):
         mydata = Product.objects.all().values()
-        context = {'products': mydata}
+        context = {'products': mydata, 'name': 'All products'}
         print(context)
         return context
 

@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<h3>Enter the information about the product</h3>
   <form method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}

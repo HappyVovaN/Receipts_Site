@@ -4,14 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Receipts site</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <title>Receipts site</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-sm">
-          <h1 class="mt-2">Main pages</h1>
-          <hr class="mt-0 mb-4">
+            <h1 class="mt-2">Receipts handling</h1>
+            <div class="btn-group" role="group" aria-label="Main pages">
+                <a type="button" class="btn btn-secondary" href="{% url 'receipts:receipts_main'  %}" class="text-light">Main</a>
+                <a type="button" class="btn btn-secondary" href="{% url 'receipts:statistic'  %}" class="text-light">Statistics</a>
+                <a type="button" class="btn btn-secondary" href="{% url 'receipts:receipts_in'  %}" class="text-light">Upload receipt</a>
+                <a type="button" class="btn btn-secondary" href="{% url 'receipts:manual_in'  %}" class="text-light">Enter receipt manually</a>
+                <a type="button" class="btn btn-secondary" href="{% url 'receipts:product-form'  %}" class="text-light">All receipts</a>
+            </div>
+            <hr class="mt-0 mb-2">
           {% block content %}
           {% endblock %}
         </div>

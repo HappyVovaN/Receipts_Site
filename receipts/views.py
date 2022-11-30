@@ -3,9 +3,11 @@ from .models import Product
 from django.views.generic import CreateView, UpdateView, ListView
 from receipts.forms import ProductForm
 from django.urls import reverse_lazy
-
+from .forms import UploadFileForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
+from .handle_receipts import handle_uploaded_file
 
 def receipts(request):
     context = {
@@ -15,10 +17,14 @@ def receipts(request):
 
 
 def receipts_in(request):
-    context = {
-        'cont': 'пишем сюда свои чеки или закидываем'
-    }
-    return render(request, 'receipts/upload.html', context)
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('templates/receipts/upload.html')
+    else:
+        form = UploadFileForm()
+    return render(request, 'receipts/upload.html', {'form': form})
 
 
 def all_receipts(request):
